@@ -1,0 +1,18 @@
+<html>
+<head> 
+    <title> </title>
+</head>
+<body>
+        <h3> <% include ../userlogin/header.ejs%>        
+        <ul>
+        <br>
+        <br>
+        <h3> Silahkan Pilih Model : </h3>
+    <% subkategori.forEach(function(a){%>
+        
+            <li> <a href = '/produk/<%=a.id%>'> <%= a.jenis_kategori %> </a> </li>
+    <% })%>
+        
+        </ul>
+</body>
+</html>

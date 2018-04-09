@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+
+    <% if (dataheader == null){ %>
+
+        <a href ='/'> Login </a>
+        <a href ='/register'> Register </a>
+    <%} else {%>
+        <h4> Selamat Malam <b> <%=dataheader%> </b>, <button type='button' onclick='return confirm('Anda Yakin Ingin Keluar ?')'> <a href='/logout'> logout </a> </button> <button type='submit'> <a href='/keranjang'> Keranjang </a> </button> </h4>
+    <%}%>
+
+</body>
+
+</html>

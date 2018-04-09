@@ -1,0 +1,21 @@
+<html>
+<head> 
+    <title> </title>
+</head>
+
+<body>
+
+    <h3> <% include ../userlogin/header.ejs%>    
+    <ul>
+    <% produkstock.forEach(function(a){%>
+        
+            <li> <a href = '/detailproduk/<%= a.id %>'>  <%= a.ukuran %> <%= a.stock %> </a> </li>
+    <% })%>
+        
+        </ul>
+
+</body>
+
+
+
+</html>

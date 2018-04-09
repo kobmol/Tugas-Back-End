@@ -1,0 +1,23 @@
+<html>
+<head> 
+    <title> </title>
+</head>
+
+<body>
+        <h3> <% include ../userlogin/header.ejs%>
+        <ul>
+        <br>
+        <br>
+        <h3> Silahkan Pilih Produk : </h3>
+    <% produk.forEach(function(a){%>
+        
+            <li> <a href = '/warnaproduk/ <%=a.id%>'> Produk :  <%= a.id_subkategori %> <%= a.nama_produk %> <br> Deskripsi <%= a.deskripsi %> <br>  Harga :  <%= a.harga %> </a> </li>
+    <% })%>
+        
+        </ul>
+
+</body>
+
+
+
+</html>

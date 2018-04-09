@@ -1,0 +1,36 @@
+<html>
+<head>
+<title> Form Edit Produk </title>
+</head>
+
+<body> 
+
+
+<table border='2px'>
+     
+</table>
+
+<hr> 
+<hr> 
+
+<form method="post" action="/editdata_produk/<%= id %>">
+   Nama Produk
+   <br> 
+   <input type='text' name='namaproduk' placeholder='Edit Produk'/>
+   <br>
+   <br>
+   Deskripsi Produk
+   <br>   
+   <textarea cols="70" rows="3"  name='deskripsiproduk' placeholder='deskripsi produk'></textarea> 
+   <br>
+   <br>
+   Harga Produk
+   <br> 
+   <input type='number' name='hargaproduk' placeholder='Edit Harga Produk'/>
+    <input type='submit' value='simpan'/>
+</form>
+
+</body>
+
+
+</html>

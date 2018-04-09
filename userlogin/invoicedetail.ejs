@@ -1,0 +1,87 @@
+<html>
+<head> 
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style>
+.gaya2{
+    width:100%;
+    padding:10px;
+    float:left; 
+    background: #144b;
+    color: #fff;
+    font-size:30px;
+    text-align:center;
+    margin-top:20px;
+    border-bottom:2px solid black;
+    margin-bottom: 5px;
+    border-top: 2px solid black;
+    border-left:2px solid black;
+    border-right:2px solid black;    
+}
+.rendi1{
+    box-shadow:0 0 30px violet;
+}
+
+
+</style>
+
+</head>
+
+<body>
+<div class='container rendi1' >
+<% include ../userlogin/header.ejs%> 
+
+<div class='gaya2'> 
+Keranjang Belanja Anda : 
+</div>
+<table class="table table-striped"  >
+        <tr style='background-color:grey'>
+            <th> nama produk </th>
+            <th> warna    </th> 
+            <th> ukuran     </th> 
+            <th> stock   </th> 
+            <th> kuantitas    </th>
+            <th> Price    </th> 
+            <th> Total Harga    </th>    
+            <th> Delete </th>                                                                                                               
+        </tr>
+    <% keranjang.forEach(function(a){%>
+        <tr>
+            <td><%=a.nama_produk%></td>
+            <td><%=a.warna%></td>
+            <td><%=a.ukuran%></td>
+            <td><%=a.stock%></td>
+            <td><%=a.Kuantitas%></td>
+            <td><%=a.Price%></td>
+            <td><%=a.total_harga%></td>      
+            <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_keranjang/<%= a.id %>">delete</a></td>                                                                                                                                                                                                                                                    
+        </tr>
+
+    <% })%>
+</table>
+
+<div style='width:100%;float:left;background:rgb(100,50,50);height:10%;'>
+    <span style='font-weight:600px;width:10%;color:#ffff;text-align:center;'>
+        <% var b = 0  %>
+        <% for (i=0;i<keranjang.length;i++){%>
+            <% b = (keranjang[i].total_harga + b)%>
+        <%}%>      
+        <h2> Total Belanja : Rp. <%=b%> </h2>          
+        <br>
+        <input name='grandtotal' value='<%= b %>' hidden />
+    </span>
+</div>
+        <br>
+    <center>    
+        <button class='btn btn-success' style='margin-top:10px;margin-bottom:5px' type='submit' > Check Out </button>
+    </center>    
+</div> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+
+
+</html>

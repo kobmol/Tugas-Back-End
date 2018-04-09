@@ -1,0 +1,216 @@
+<html>
+<head>
+<title> Tugas Back End </title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body> 
+
+<div class="container-fluid">
+        <table border='2px'>
+            <tr style="background-color:skyblue;">    
+                <h3> Kategori </h3>            
+                <th>ID</th>
+                <th>Season</th>   
+                <th>Hapus</th>  
+                <th>Aksi</th>   
+            </tr>   
+            <% rendi.forEach(function(x)  { %>
+                <tr>
+                    <td><%= x.id %> </td>
+                    <td><%= x.season %></td> 
+                    <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_kat/<%= x.id %>">delete</a></td>  
+                    <td> <button type="button" onclick = "return confirm ('Are you sure to edit this data ?');" > <a href="/formedit_kategori/<%= x.id %>">edit</a></td>                                        
+                </tr>
+            <% }) %>    
+        </table>
+</div>
+                    <hr>
+                    <hr>
+<div class="container-fluid">
+    <form action='/simpankategori' method='POST'>
+        <input type='text' name='kategori' placeholder='jenis kategori'/>
+        <input type='submit' value='simpan'/>
+    </form>
+</div>
+
+<div class="container-fluid">
+    <table border='2px'>
+        <tr style="background-color:skyblue;">    
+            <h3> Sub Kategori </h3>            
+            <th> ID </th>
+            <th>Season</th>   
+            <th>Kategori</th>           
+            <th collspan="2">hapus</th>   
+            <th collspan="2">aksi</th>   
+        </tr>
+        <% rendi2.forEach(function (y)  { %>
+            <tr>
+                <td> <%= y.id %> </td>
+                <td> <%= y.season %>
+                <td><%= y.jenis_kategori %></td>  
+                <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_subkat/<%= y.id %>">delete</a></td> 
+                <td> <button type="button" onclick = "return confirm ('Are you sure to edit this data ?');" > <a href="/formedit_subkategori/<%= y.id %>">edit</a></td>                                                                        
+            </tr>
+        <% }) %>    
+    </table>
+
+</div>
+            <hr>
+            <hr>
+
+<div class="container-fluid">
+    <form action='/simpansubkategori' method='POST'/>
+        <select name='id_season_subkategori'>
+            <option> Pilih Season </option>                    
+            <% rendi.forEach(function(y) {%> 
+                <option name="id_season" value="<%= y.id %>"> <%= y.season %></option>
+            <% }) %>
+        </select>
+
+        <input type='text' name='subkategori' placeholder='sub kategori'/>
+        <input type='submit' value='simpan'/>
+    </form>
+</div>
+
+<div class="container-fluid">
+    <table border='2px'>
+        <tr style="background-color:skyblue;">    
+            <h3> Katalog Produk </h3>       
+            <th> id </th>
+            <th>Season</th>
+            <th>Subkategori</th>   
+            <th>Nama Produk</th> 
+            <th>Deskripsi</th>
+            <th>Harga</th>                                  
+            <th collspan="2">hapus</th>   
+            <th collspan="2">aksi</th>  
+        </tr> 
+        <% rendi3.forEach(function(z)  { %>
+        <tr>                         
+            <td><%= z.id%> </td>
+            <td><%= z.season %> </td>
+            <td><%= z.jenis_kategori %></td>
+            <td><%= z.nama_produk %></td> 
+            <td><%= z.deskripsi %></td> 
+            <td><%= z.harga %></td>             
+            <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_produk/<%= z.id %>">delete</a></td>  
+            <td> <button type="button" onclick = "return confirm ('Are you sure to edit this data ?');" > <a href="/formedit_produk/<%= z.id %>">edit</a></td>                                        
+        </tr>
+        <% }) %>     
+    </table>
+</div>    
+    <hr>
+    <hr>
+
+<div class="container-fluid">
+    <form action='/simpanproduk' method='POST'>
+        <select name='id_subkategoriproduk'>
+            <option> Pilih Detail Produk </option>                
+            <% rendi2.forEach(function(z) {%> 
+            <option name="id_subkategori" value="<%= z.id %>"> <%= z.season %> > <%= z.jenis_kategori %></option>
+            <% }) %>
+        </select>
+        <br>
+        <br>        
+        <input type='text' name='namaproduk' placeholder='nama produk'/>
+        <br>
+        <br>
+        <textarea cols="70" rows="3"  name='deskripsiproduk' placeholder='deskripsi produk'></textarea>
+        <br>
+        <br>        
+        <input type='number' name='hargaproduk' placeholder='harga produk'/>
+        <input type='submit' value='simpan'/>
+    </form>
+</div>
+
+    <hr>
+    <hr>
+
+<div class="container-fluid">
+    <table border='2px'>
+        <tr style="background-color:skyblue;">    
+            <h3> Warna Produk </h3>  
+            <th> id </th>                      
+            <th> Nama Produk </th>
+            <th>Warna</th>             
+            <th collspan="2">hapus</th>   
+            <th collspan="2">aksi</th>  
+        </tr>   
+        <% rendi4.forEach(function(a)  { %>
+        <tr>
+            <td><%=a.id%></td>                            
+            <td><%=a.nama_produk%></td>                
+            <td> <%= a.warna %> </td>
+            <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_warna/<%= a.id %>">delete</a></td>  
+            <td> <button type="button" onclick = "return confirm ('Are you sure to edit this data ?');" > <a href="/formedit_produk/<%= a.id %>">edit</a></td>                                                                      
+        </tr>
+        <% }) %>   
+     </table>                   
+</div>
+<hr>
+<hr>
+<div class="container-fluid">
+    <form method='post' action='/simpanwarna'>
+        <select name='id_produk2'>
+            <option> Pilih id Produk </option>        
+            <% rendi5.forEach(function(a) {%> 
+            <option name="id_produk" value="<%= a.id %>"> <%= a.nama_produk %></option>
+            <% }) %>
+        </select>
+        <br>
+        <br>        
+        <input type='text' name='warnaproduk' placeholder='masukkan warna produk'/>        
+        <input type = 'submit' value='simpan'/>
+    </form>
+</div>
+<hr>
+<hr>
+
+<div class="container-fluid">
+    <table border='2px'>
+        <tr style="background-color:skyblue;">    
+            <h3> Ukuran dan Stok Produk </h3>  
+            <th> id </th>                      
+            <th> IdProduk_Warna </th>
+            <th>Ukuran</th>
+            <th>Stok</th>                                      
+            <th collspan="2">hapus</th>   
+            <th collspan="2">aksi</th>  
+        </tr>
+        <% rendi6.forEach(function(b)  { %>
+        <tr>
+            <td><%=b.id%></td>                            
+            <td><%=b.warna%></td>                
+            <td> <%= b.ukuran %> </td>
+            <td> <%= b.stock%> </td>            
+            <td> <button type="button" onclick = "return confirm ('Are you sure to delete this data ?');" > <a href="/delete_ukuran/<%= b.id %>">delete</a></td>  
+            <td> <button type="button" onclick = "return confirm ('Are you sure to edit this data ?');" > <a href="/formedit_produk/<%= b.id %>">edit</a></td>                                                                      
+        </tr>
+        <% }) %> 
+     </table>
+     <br>
+     <br>   
+
+    <form method='post' action='/simpanukuran'>
+    <select name='produkwarna'>
+        <% rendi4.forEach(function(x){%>
+            <option value='<%=x.id%>'> <%=x.warna%> > <%=x.nama_produk%> </option>
+        <%})%>
+    </select>
+    
+        <input type='text' name='ukuranproduk' placeholder='Silahkan masukkan ukuran'/>
+        <input type='text' name='stokproduk' placeholder='Silahkan masukkan stok'/>  
+        <input type='submit' value='simpan'/>          
+    </form>
+        
+</body>
+
+</html>

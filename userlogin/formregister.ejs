@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+   <head><title>Mmebuat Tabel</title>
+
+   <style>
+    .table{background-color:skyblue}
+    #head{background-color:yellow}
+   </style>
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      
+   </head>
+   <body>
+   <body>
+
+   <h2>Silahkan Maukkan Username dan Pasword Anda </h2>
+   
+   <form id="register" method="POST" action="/register">
+   <div class="container-fluid" >
+        <div class="col-md-2">
+            Nama Lengkap : <input type="text" name="namalengkap" required />
+            <br>
+            <br>
+            User Name : <input type="text" name="username" required />
+            <br>
+            <br>
+            Password : <input type="password" name="password" required />
+            <br>
+            <br>
+            Email  : <input type="email" name="clientemail" required />
+            <br>
+            <br>
+            Phone Number : <input type="number" name="clientphone" required />
+            <br>
+            <br>
+            <p> <b> <h5><%= typeof notif !== 'undefined' ? notif  : null %> </h5></b></p>                   
+           <input type="submit" value="submit"/>    
+           
+        </div>
+        
+    </div>
+   </form>
+ 
+   </body>
+   
+   </body>
+</html>
